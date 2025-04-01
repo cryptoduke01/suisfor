@@ -5,12 +5,23 @@ function App() {
   const [inputText, setInputText] = useState('');
   const [generatedImage, setGeneratedImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [imageCount, setImageCount] = useState(0);
   const canvasRef = useRef(null);
 
-  // Generate default image on component mount
+  // Load the image count from localStorage on component mount
   useEffect(() => {
+    const storedCount = localStorage.getItem('suiImageCount');
+    if (storedCount) {
+      setImageCount(parseInt(storedCount, 10));
+    }
     generateDefaultImage();
   }, []);
+
+  const incrementImageCount = () => {
+    const newCount = imageCount + 1;
+    setImageCount(newCount);
+    localStorage.setItem('suiImageCount', newCount.toString());
+  };
 
   const generateDefaultImage = async () => {
     try {
@@ -224,6 +235,9 @@ function App() {
         url: imageUrl,
         text: inputText
       });
+
+      // Increment the image count
+      incrementImageCount();
     } catch (error) {
       console.error('Error generating image:', error);
     } finally {
@@ -361,6 +375,11 @@ function App() {
             </button>
           </div>
         </motion.div>
+
+        {/* Image Counter */}
+        <div className="text-center mt-8 text-sm text-gray-400">
+          <p>{imageCount} {imageCount === 1 ? 'image' : 'images'} generated and counting</p>
+        </div>
       </div>
 
       {/* Hidden canvas for image generation */}
