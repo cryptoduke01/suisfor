@@ -1,0 +1,194 @@
+@import url("https://fonts.cdnfonts.com/css/dm-sans");
+
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  background-color: #030a1a;
+  background-image: linear-gradient(135deg, #030a1a 0%, #071332 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+.sui-button {
+  background-color: #4c9aff;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.sui-button:hover {
+  background-color: #2b7fff;
+  box-shadow: 0 0 12px rgba(76, 154, 255, 0.5);
+}
+
+.sui-input {
+  background-color: rgba(13, 25, 51, 0.5);
+  border: 1px solid rgba(67, 87, 133, 0.4);
+  border-radius: 9999px;
+  padding: 0.75rem 1.25rem;
+  color: white;
+  width: 100%;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.sui-input:focus {
+  box-shadow: 0 0 0 2px rgba(76, 154, 255, 0.4);
+  border-color: rgba(76, 154, 255, 0.6);
+}
+
+.sui-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sui-card {
+  background-color: rgba(11, 20, 40, 0.4);
+  border: 1px solid rgba(67, 87, 133, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.generated-image-container {
+  position: relative;
+  background-color: rgba(14, 27, 52, 0.5);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.download-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Layout Utilities */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .md\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, #4c9aff, #8c6fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
