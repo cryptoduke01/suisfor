@@ -45,8 +45,8 @@ function App() {
       // Add some subtle background elements
       createBackgroundElements(ctx, width, height);
 
-      // Unified font size for all text
-      const fontSize = 80;
+      // Unified font size for all text - increased for better mobile visibility
+      const fontSize = 100;
       ctx.font = `bold ${fontSize}px "DM Sans", sans-serif`;
       ctx.textAlign = 'center';
 
@@ -66,13 +66,13 @@ function App() {
 
       // Draw elliptical border around the text (like in the second image)
       const textWidth = ctx.measureText(defaultText).width;
-      drawEllipticalBorder(ctx, width / 2, height / 2 + 40, textWidth / 1.7, 70);
+      drawEllipticalBorder(ctx, width / 2, height / 2 + 40, textWidth / 1.7, 80);
 
       // Add subtle accent dots left and right of text like in the reference
       addAccentDots(ctx, width / 2, height / 2 + 60, textWidth);
 
       // Add a subtle Sui logo watermark
-      ctx.font = '18px "DM Sans", sans-serif';
+      ctx.font = '24px "DM Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
       ctx.fillText('Powered by Sui', width / 2, height - 40);
@@ -198,8 +198,8 @@ function App() {
       // Add some subtle background elements
       createBackgroundElements(ctx, width, height);
 
-      // Unified font size for all text
-      const fontSize = 80;
+      // Unified font size for all text - increased for better mobile visibility
+      const fontSize = 100;
       ctx.font = `bold ${fontSize}px "DM Sans", sans-serif`;
       ctx.textAlign = 'center';
 
@@ -217,13 +217,13 @@ function App() {
 
       // Draw elliptical border around the text (like in the second image)
       const textWidth = ctx.measureText(inputText).width;
-      drawEllipticalBorder(ctx, width / 2, height / 2 + 40, textWidth / 1.7, 70);
+      drawEllipticalBorder(ctx, width / 2, height / 2 + 40, textWidth / 1.7, 80);
 
       // Add subtle accent dots left and right of text like in the reference
       addAccentDots(ctx, width / 2, height / 2 + 60, textWidth);
 
       // Add a subtle Sui logo watermark
-      ctx.font = '18px "DM Sans", sans-serif';
+      ctx.font = '24px "DM Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
       ctx.fillText('Powered by Sui', width / 2, height - 40);
