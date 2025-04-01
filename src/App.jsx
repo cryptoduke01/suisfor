@@ -273,18 +273,13 @@ function App() {
   const shareToGitHub = () => {
     if (!generatedImage) return;
     // Open GitHub profile or repo
-    window.open('https://github.com/sui-foundation', '_blank');
+    window.open('https://github.com/cryptoduke01/suisfor', '_blank');
   };
 
   // Share to Telegram function
   const shareToTelegram = () => {
     if (!generatedImage) return;
-
-    const text = `Sui is for ${generatedImage.text}. Create your own!`;
-    const url = window.location.href;
-    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-
-    window.open(shareUrl, '_blank');
+    window.open('https://t.me/cryptoduke01', '_blank');
   };
 
   return (
