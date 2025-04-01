@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+// Count API URL - this will sync counts across all users
+const COUNT_API_URL = 'https://api.countapi.xyz/hit/suisfor.com/visits';
+
 function App() {
   const [inputText, setInputText] = useState('');
   const [generatedImage, setGeneratedImage] = useState(null);
@@ -8,19 +11,42 @@ function App() {
   const [imageCount, setImageCount] = useState(0);
   const canvasRef = useRef(null);
 
-  // Load the image count from localStorage on component mount
+  // Load the image count from the Count API on component mount
   useEffect(() => {
-    const storedCount = localStorage.getItem('suiImageCount');
-    if (storedCount) {
-      setImageCount(parseInt(storedCount, 10));
-    }
+    fetch(COUNT_API_URL)
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.value) {
+          setImageCount(data.value);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching count:', error);
+        // Fall back to localStorage if API fails
+        const storedCount = localStorage.getItem('suiImageCount');
+        if (storedCount) {
+          setImageCount(parseInt(storedCount, 10));
+        }
+      });
     generateDefaultImage();
   }, []);
 
   const incrementImageCount = () => {
-    const newCount = imageCount + 1;
-    setImageCount(newCount);
-    localStorage.setItem('suiImageCount', newCount.toString());
+    // Increment the count via API to ensure it's synced across all users
+    fetch(COUNT_API_URL)
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.value) {
+          setImageCount(data.value);
+        }
+      })
+      .catch(error => {
+        console.error('Error incrementing count:', error);
+        // Fall back to local increment if API fails
+        const newCount = imageCount + 1;
+        setImageCount(newCount);
+        localStorage.setItem('suiImageCount', newCount.toString());
+      });
   };
 
   const generateDefaultImage = async () => {
@@ -46,30 +72,30 @@ function App() {
       createBackgroundElements(ctx, width, height);
 
       // Unified font size for all text - increased for better mobile visibility
-      const fontSize = 100;
+      const fontSize = 110;
       ctx.font = `bold ${fontSize}px "DM Sans", sans-serif`;
       ctx.textAlign = 'center';
 
       // Add the text "Sui" at top
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText('Sui', width / 2, height / 3 - 40);
+      ctx.fillText('Sui', width / 2, height / 3 - 80);
 
-      // Add "is for" on the second line
-      ctx.fillText('is for', width / 2, height / 3 + 40);
+      // Add "is for" on the second line with more spacing
+      ctx.fillText('is for', width / 2, height / 2 - 40);
 
-      // Add the default text "everyone" (with lighter blue)
+      // Add the default text "everyone" (with lighter blue) with more spacing
       const defaultText = "everyone";
 
       // Use a lighter blue for the main text instead of gradient and glow
       ctx.fillStyle = '#7cc5ff';
-      ctx.fillText(defaultText, width / 2, height / 2 + 60);
+      ctx.fillText(defaultText, width / 2, height / 2 + 120);
 
       // Draw elliptical border around the text (like in the second image)
       const textWidth = ctx.measureText(defaultText).width;
-      drawEllipticalBorder(ctx, width / 2, height / 2 + 40, textWidth / 1.7, 80);
+      drawEllipticalBorder(ctx, width / 2, height / 2 + 120, textWidth / 1.7, 100);
 
       // Add subtle accent dots left and right of text like in the reference
-      addAccentDots(ctx, width / 2, height / 2 + 60, textWidth);
+      addAccentDots(ctx, width / 2, height / 2 + 120, textWidth);
 
       // Add a subtle Sui logo watermark
       ctx.font = '24px "DM Sans", sans-serif';
@@ -199,28 +225,28 @@ function App() {
       createBackgroundElements(ctx, width, height);
 
       // Unified font size for all text - increased for better mobile visibility
-      const fontSize = 100;
+      const fontSize = 110;
       ctx.font = `bold ${fontSize}px "DM Sans", sans-serif`;
       ctx.textAlign = 'center';
 
       // Add the text "Sui" at top
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText('Sui', width / 2, height / 3 - 40);
+      ctx.fillText('Sui', width / 2, height / 3 - 80);
 
-      // Add "is for" on the second line
-      ctx.fillText('is for', width / 2, height / 3 + 40);
+      // Add "is for" on the second line with more spacing
+      ctx.fillText('is for', width / 2, height / 2 - 40);
 
-      // Add the input text (with lighter blue)
+      // Add the input text (with lighter blue) with more spacing
       // Use a lighter blue for the main text instead of gradient and glow
       ctx.fillStyle = '#7cc5ff';
-      ctx.fillText(inputText, width / 2, height / 2 + 60);
+      ctx.fillText(inputText, width / 2, height / 2 + 120);
 
       // Draw elliptical border around the text (like in the second image)
       const textWidth = ctx.measureText(inputText).width;
-      drawEllipticalBorder(ctx, width / 2, height / 2 + 40, textWidth / 1.7, 80);
+      drawEllipticalBorder(ctx, width / 2, height / 2 + 120, textWidth / 1.7, 100);
 
       // Add subtle accent dots left and right of text like in the reference
-      addAccentDots(ctx, width / 2, height / 2 + 60, textWidth);
+      addAccentDots(ctx, width / 2, height / 2 + 120, textWidth);
 
       // Add a subtle Sui logo watermark
       ctx.font = '24px "DM Sans", sans-serif';

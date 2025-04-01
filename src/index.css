@@ -57,7 +57,7 @@ body {
   background-color: rgba(15, 23, 42, 0.5);
   border: 1px solid rgba(76, 154, 255, 0.2);
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   transition: all 0.3s;
@@ -69,20 +69,14 @@ body {
   background-color: rgba(14, 27, 52, 0.5);
   border-radius: 0.75rem;
   overflow: hidden;
-  aspect-ratio: 1;
+  aspect-ratio: 1.5;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   width: 100%;
   max-width: 100%;
-}
-
-.generated-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  max-width: none;
+  margin: 0.5rem 0;
 }
 
 .download-button {
@@ -201,15 +195,27 @@ body {
 }
 
 @media (max-width: 768px) {
-  .generated-image-container {
-    aspect-ratio: 1;
-    width: 100%;
+  .text-4xl {
+    font-size: 2.5rem;
+    line-height: 1.2;
   }
 
-  .generated-image-container img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  .text-lg {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-top: 0.5rem;
+  }
+
+  .sui-card {
+    padding: 0.75rem;
+  }
+
+  .mb-8 {
+    margin-bottom: 1rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 0.75rem;
   }
 }
 
